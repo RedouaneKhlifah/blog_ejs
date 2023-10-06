@@ -1,6 +1,7 @@
 "use strict";
 import express from "express";
 import dotenv from "dotenv";
+import firebase from "firebase-admin";
 
 // routes //
 import ArticalRoute from "./routes/ArticalRoute.js";
@@ -28,7 +29,8 @@ app.get("/", (req, res) => {
 
 app.use(express.json());
 
-app.use("/artical", ArticalRoute);
+app.use("/article", ArticalRoute);
+app.use("/category", CategoryRoute);
 
 app.listen(port, function () {
   console.log("Server listening on port " + port + "...");

@@ -14,15 +14,18 @@ const router = Router();
 
 // get all articals
 router.get("/", async (req, res) => {
+  console.log("tets");
   const articals = await fetchArticals();
   res.render("articals", { articals });
 });
 
+// get all artical FORM
+router.get("/articalForm", async (req, res) => {
+  res.render("formArticle");
+});
+
 // router.get("/", fetchArticals);
 
-router.get("/yes", (req, res) => {
-  res.render("index", { text: "hello" });
-});
 // get one artical
 router.get("/:id", fetchArtical);
 

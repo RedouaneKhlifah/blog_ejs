@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.infoInpute {
+  border: 1px solid #d9d8d8;
+  font-size: 0.875rem;
+
+  outline: none; /* Removes the default outline */
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5); /* Equivalent to focus:ring-indigo-500 in Tailwind CSS */
+}
+
+.infoInpute:focus {
+  border-color: #8b9dec;
+}

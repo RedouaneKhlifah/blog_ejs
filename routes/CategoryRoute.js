@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import {
   fetchCategorys,
+  fetchCategorysAPI,
   createCategory,
   updateCategory,
   deleteCategory,
@@ -9,6 +10,6 @@ import {
 
 const router = Router();
 
-router.get("/", fetchCategorys);
+router.get("/fetchCategorysAPI", fetchCategorysAPI);
 
 export default router;

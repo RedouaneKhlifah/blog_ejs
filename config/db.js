@@ -13,5 +13,4 @@ const pool = mysql
     connectionLimit: process.env.connectionLimit,
   })
   .promise();
-console.log(pool);
 export default pool;
