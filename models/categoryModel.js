@@ -4,16 +4,11 @@ const CategoryModel = {
   getAllCategory: async () => {
     const req = "SELECT * FROM Category";
     try {
-      const connection = pool.getConnection();
-      try {
-        const res = await connection.query(req);
-        connection.release();
-        return res;
-      } catch (err) {
-        connection.release();
-        throw err;
-      }
+      const [row, fields] = await pool.query(req);
+      pool.releaseConnection();
+      return row;
     } catch (err) {
+      pool.releaseConnection();
       throw err;
     }
   },

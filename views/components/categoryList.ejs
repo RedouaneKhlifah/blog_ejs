@@ -1,0 +1,20 @@
+<div class="category-list relative overflow-hidden">
+  <button
+    class="scroll-button scroll-left absolute top-1/2 transform -translate-y-1/2 left-0 mr-6"
+    id="scrollRight"
+  >
+    &#8592;
+  </button>
+  <div class="category-container flex space-x-4 px-6">
+    <!-- Add your categories here -->
+    <%- include("utils/CategoryShip.ejs" ,{ category: categories }) %>
+
+    <!-- Add more categories as needed -->
+  </div>
+  <button
+    class="scroll-button scroll-right absolute right-0 top-1/2 transform -translate-y-1/2 pr-4"
+    id="scrollLeft"
+  >
+    &#8594;
+  </button>
+</div>

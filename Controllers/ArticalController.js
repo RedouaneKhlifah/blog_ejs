@@ -1,5 +1,6 @@
 import asynchandler from "express-async-handler";
 import ArticalModel from "../models/ArticalModel.js";
+// import storageRef from "../config/firebase.js";
 
 /**
  * @desc Get all articals
@@ -29,12 +30,24 @@ const fetchArtical = asynchandler(async (req, res) => {
  * @access public
  */
 const createArtical = asynchandler(async (req, res) => {
-  const { title, body, image } = req.body;
-  const data = {
-    title: title,
-    body: body,
-    image: image,
-  };
+  const { title, body } = req.body;
+  const { file } = req; // Assuming you're using a middleware like multer to handle file uploads
+
+  // const data = {
+  //   title: title,
+  //   body: body,
+  // };
+
+  // Generate a unique filename (you can use any logic you prefer)
+  const uniqueFileName = `${Date.now()}-${file.originalname}`;
+
+  // Upload the file to Firebase Storage
+  const fileRef = storageRef.child(uniqueFileName);
+  const snapshot = await fileRef.put(file.buffer);
+
+  // Get the URL of the uploaded image
+  const downloadURL = await snapshot.ref.getDownloadURL();
+
   const artical = await ArticalModel.createArtical(id, data);
   return artical;
 });
